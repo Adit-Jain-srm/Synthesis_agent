@@ -1,8 +1,24 @@
 import json
 from tools.api_client import SynthesisAPI
 
+REPO_URL = "https://github.com/Adit-Jain-srm/Synthesis_agent"
 
-def create_project(name, description, problem_statement, repo_url, track_uuids=None, conversation_log=""):
+VALID_FRAMEWORKS = ["langchain", "elizaos", "mastra", "vercel-ai-sdk", "anthropic-agents-sdk", "other"]
+VALID_INTENTIONS = ["continuing", "exploring", "one-time"]
+
+
+def create_project(
+    name,
+    description,
+    problem_statement,
+    repo_url=None,
+    track_uuids=None,
+    conversation_log="",
+    agent_framework="other",
+    skills=None,
+    tools=None,
+    intention="continuing",
+):
     api = SynthesisAPI()
 
     with open("config.json", "r") as f:
@@ -20,12 +36,16 @@ def create_project(name, description, problem_statement, repo_url, track_uuids=N
         "description": description,
         "teamUUID": config["teamId"],
         "problemStatement": problem_statement,
-        "repoURL": repo_url,
+        "repoURL": repo_url or REPO_URL,
         "trackUUIDs": track_uuids or [],
         "conversationLog": conversation_log,
         "submissionMetadata": {
-            "agentHarness": "claude-code",
-            "model": "claude-sonnet-4-6",
+            "agentHarness": "cursor",
+            "model": "claude-4.6-opus",
+            "agentFramework": agent_framework,
+            "skills": skills or ["smart-contract-development", "on-chain-identity", "agent-trust-infrastructure"],
+            "tools": tools or ["hardhat", "solidity", "python", "base-mainnet"],
+            "intention": intention,
         },
     }
 

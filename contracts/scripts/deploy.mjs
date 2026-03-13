@@ -4,24 +4,36 @@ const { ethers } = hre;
 async function main() {
   const [deployer] = await ethers.getSigners();
   console.log("Deploying with:", deployer.address);
+  console.log("Balance:", ethers.formatEther(await ethers.provider.getBalance(deployer.address)), "ETH\n");
 
   const Registry = await ethers.getContractFactory("AgentRegistry");
   const registry = await Registry.deploy();
   await registry.waitForDeployment();
   const registryAddr = await registry.getAddress();
-  console.log("AgentRegistry deployed to:", registryAddr);
+  console.log("AgentRegistry (ERC-8004 Identity):", registryAddr);
 
   const Reputation = await ethers.getContractFactory("ReputationManager");
   const reputation = await Reputation.deploy(registryAddr);
   await reputation.waitForDeployment();
-  console.log("ReputationManager deployed to:", await reputation.getAddress());
+  const reputationAddr = await reputation.getAddress();
+  console.log("ReputationManager (ERC-8004 Reputation):", reputationAddr);
 
   const Commitment = await ethers.getContractFactory("CommitmentEngine");
   const commitment = await Commitment.deploy(registryAddr);
   await commitment.waitForDeployment();
-  console.log("CommitmentEngine deployed to:", await commitment.getAddress());
+  const commitmentAddr = await commitment.getAddress();
+  console.log("CommitmentEngine (Agent Cooperation):", commitmentAddr);
 
-  console.log("\nAll contracts deployed successfully!");
+  console.log("\n=== Deployment Summary ===");
+  console.log(JSON.stringify({
+    network: hre.network.name,
+    deployer: deployer.address,
+    contracts: {
+      AgentRegistry: registryAddr,
+      ReputationManager: reputationAddr,
+      CommitmentEngine: commitmentAddr
+    }
+  }, null, 2));
 }
 
 main().catch((error) => {

@@ -101,7 +101,7 @@ def cmd_tracks():
     return tracks
 
 
-def cmd_create_project(name, description, problem_statement, repo_url, track_uuids=None):
+def cmd_create_project(name, description, problem_statement, repo_url=None, track_uuids=None):
     """Create a hackathon project."""
     result = create_project(name, description, problem_statement, repo_url, track_uuids)
     print("Project created:")
@@ -181,12 +181,12 @@ def main():
 
     if command == "create-project":
         if len(sys.argv) < 5:
-            print("Usage: python agent.py create-project <name> <description> <problem_statement> <repo_url> [track_uuids...]")
+            print("Usage: python agent.py create-project <name> <description> <problem_statement> [repo_url] [track_uuids...]")
             return
         name = sys.argv[2]
         description = sys.argv[3]
         problem_statement = sys.argv[4]
-        repo_url = sys.argv[5] if len(sys.argv) > 5 else ""
+        repo_url = sys.argv[5] if len(sys.argv) > 5 else None
         track_uuids = sys.argv[6:] if len(sys.argv) > 6 else None
         cmd_create_project(name, description, problem_statement, repo_url, track_uuids)
 
