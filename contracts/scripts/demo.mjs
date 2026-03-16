@@ -44,9 +44,13 @@ async function main() {
   const Commitment = await ethers.getContractFactory("CommitmentEngine");
   const commitment = await Commitment.deploy(registryAddr);
 
-  console.log(`  AgentRegistry:     ${registryAddr}`);
-  console.log(`  ReputationManager: ${await reputation.getAddress()}`);
-  console.log(`  CommitmentEngine:  ${await commitment.getAddress()}\n`);
+  const Validation = await ethers.getContractFactory("ValidationRegistry");
+  const validation = await Validation.deploy(registryAddr);
+
+  console.log(`  AgentRegistry:       ${registryAddr}`);
+  console.log(`  ReputationManager:   ${await reputation.getAddress()}`);
+  console.log(`  CommitmentEngine:    ${await commitment.getAddress()}`);
+  console.log(`  ValidationRegistry:  ${await validation.getAddress()}\n`);
 
   // --- Register agents ---
   console.log("▸ Phase 2: Register AI agents (ERC-8004 Identity)\n");
@@ -177,8 +181,38 @@ async function main() {
   console.log(`    Feedback count: ${count2}`);
   console.log(`    Average score: ${avg2}/100\n`);
 
+  // --- Validation ---
+  console.log("▸ Phase 8: Independent validation (ERC-8004 Validation Registry)\n");
+
+  const requestPayload = JSON.stringify({
+    agentId: Number(agent1Id),
+    task: "Dataset delivery for commitment #0",
+    inputs: { query: "market data, 30 days, >10k rows" },
+    outputs: { rows: 12847, format: "csv", evidenceURI: "ipfs://QmEvidence123" }
+  });
+  const requestHash = ethers.keccak256(ethers.toUtf8Bytes(requestPayload));
+
+  await validation.connect(human1).validationRequest(
+    auditor.address, agent1Id, "ipfs://QmValidationRequest1", requestHash
+  );
+  console.log(`  ✓ DataProvider requested validation from Auditor`);
+  console.log(`    Request hash: ${requestHash.slice(0, 18)}...`);
+
+  const responseHash = ethers.keccak256(ethers.toUtf8Bytes("validation-proof-data"));
+  await validation.connect(auditor).validationResponse(
+    requestHash, 92, "ipfs://QmValidationResponse1", responseHash, "data-quality"
+  );
+  console.log(`  ✓ Auditor validated: 92/100 (tag: data-quality)`);
+
+  const [vAddr, , resp, , vTag] = await validation.getValidationStatus(requestHash);
+  console.log(`    Validator: ${vAddr}`);
+  console.log(`    Score: ${resp}/100, Tag: ${vTag}`);
+
+  const [vCount, vAvg] = await validation.getSummary(agent1Id, [auditor.address], "");
+  console.log(`    Agent validation summary: ${vCount} validations, avg ${vAvg}/100\n`);
+
   // --- Final state ---
-  console.log("▸ Phase 8: Final state\n");
+  console.log("▸ Phase 9: Final state\n");
 
   const c = await commitment.getCommitment(0);
   const statusNames = ["Proposed", "Accepted", "Fulfilled", "Disputed", "Resolved", "Expired"];
@@ -186,11 +220,11 @@ async function main() {
   console.log(`  Total agents registered: ${await registry.totalAgents()}`);
   console.log(`  Total commitments: ${await commitment.getCommitmentCount()}\n`);
 
-  console.log("╔══════════════════════════════════════════════════════╗");
-  console.log("║  Demo complete — full agent trust lifecycle shown    ║");
-  console.log("║  Identity → Metadata → Commitment → Fulfillment     ║");
-  console.log("║  → Evidence → Reputation → On-chain audit trail     ║");
-  console.log("╚══════════════════════════════════════════════════════╝");
+  console.log("╔══════════════════════════════════════════════════════════╗");
+  console.log("║  Demo complete — full ERC-8004 agent trust lifecycle    ║");
+  console.log("║  Identity → Metadata → Commitment → Fulfillment        ║");
+  console.log("║  → Evidence → Reputation → Validation → Audit trail    ║");
+  console.log("╚══════════════════════════════════════════════════════════╝");
 }
 
 main().catch((error) => {

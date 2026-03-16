@@ -24,6 +24,12 @@ async function main() {
   const commitmentAddr = await commitment.getAddress();
   console.log("CommitmentEngine (Agent Cooperation):", commitmentAddr);
 
+  const Validation = await ethers.getContractFactory("ValidationRegistry");
+  const validation = await Validation.deploy(registryAddr);
+  await validation.waitForDeployment();
+  const validationAddr = await validation.getAddress();
+  console.log("ValidationRegistry (ERC-8004 Validation):", validationAddr);
+
   console.log("\n=== Deployment Summary ===");
   console.log(JSON.stringify({
     network: hre.network.name,
@@ -31,7 +37,8 @@ async function main() {
     contracts: {
       AgentRegistry: registryAddr,
       ReputationManager: reputationAddr,
-      CommitmentEngine: commitmentAddr
+      CommitmentEngine: commitmentAddr,
+      ValidationRegistry: validationAddr
     }
   }, null, 2));
 }
