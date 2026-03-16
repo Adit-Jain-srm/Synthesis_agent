@@ -132,12 +132,19 @@ The demo runs a complete 9-phase agent trust lifecycle on a local Hardhat networ
 ### Deploy to Base Sepolia
 
 ```bash
-# Set deployer key
+# Set deployer key (or use the pre-generated one in .env)
 echo "DEPLOYER_PRIVATE_KEY=0xYOUR_KEY" > .env
 
-# Deploy
-npx hardhat run scripts/deploy.mjs --network baseSepolia
+# Deploy all contracts + register agent on-chain + save deployment info
+npx hardhat run scripts/deploy-and-register.mjs --network baseSepolia
+
+# Or check balance first and get guided instructions if unfunded:
+npx hardhat run scripts/fund-and-deploy.mjs --network baseSepolia
 ```
+
+### Deployment Artifacts
+
+After deployment, contract addresses and agent registration info are saved to `deployments/<network>.json`.
 
 ---
 

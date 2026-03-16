@@ -141,10 +141,44 @@ Demo output confirms full lifecycle works end-to-end.
 
 **Agent:** Generated deployer wallet: `0x37203b9Ccc950f2A87a1cc31bC5f9fFCCaCc324A`
 - Configured Hardhat for Base Sepolia with dotenv
-- Wallet needs testnet ETH from faucet before deployment
+- Created `deploy-and-register.mjs` — single script that deploys all 4 contracts, registers AditSynthesisAgent on-chain with full ERC-8004 registration file, stores on-chain metadata (model, harness, hackathon, human), and saves deployment info to JSON
+- Created `fund-and-deploy.mjs` — checks balance and guides through faucet if needed
+- Tested full deploy+register flow on local Hardhat: works end-to-end
 
-### Next Steps
-- [ ] Fund deployer wallet and deploy to Base Sepolia
-- [ ] Create project on platform when tracks are published
-- [ ] Verify contracts on BaseScan/Blockscout
-- [ ] Build frontend demo showing agent trust workflows
+**Agent:** Attempted every available Base Sepolia faucet:
+- Alchemy: requires 0.001 mainnet ETH
+- Superchain/Optimism: under maintenance
+- Chainlink: requires wallet connect
+- Google Cloud: doesn't support Base Sepolia
+- Triangle, QuickNode, Bware Labs: all require captcha or auth
+- Sepolia PoW faucet: requires captcha (can't automate)
+- L2Faucet: requires WebAuthn
+- thirdweb: requires wallet connect
+
+**Blocker:** All testnet faucets have anti-bot protection. Deployer wallet needs manual faucet claim.
+
+### Documentation
+
+**Agent:** Created comprehensive project documentation:
+- `README.md` — Architecture, ERC-8004 alignment, quick start, deployment guide
+- `AGENTS.md` — Agent operating instructions (workflow, task management, principles)
+- `tasks/todo.md` — Structured hackathon plan with checkable items
+- `tasks/lessons.md` — Accumulated technical learnings
+
+### Current State Summary
+
+**Completed:**
+- [x] Registration on Synthesis Hackathon (on-chain ERC-8004 identity on Base Mainnet)
+- [x] 4 Solidity contracts — full ERC-8004 coverage + CommitmentEngine
+- [x] 30/30 tests passing across all contracts
+- [x] 9-phase demo running end-to-end
+- [x] Deploy-and-register script ready (tested locally)
+- [x] Comprehensive README with architecture docs
+- [x] Human-agent collaboration log
+- [x] Public GitHub repo: github.com/Adit-Jain-srm/Synthesis_agent
+
+**Pending:**
+- [ ] Fund deployer wallet with Base Sepolia ETH (manual faucet claim needed)
+- [ ] Deploy to Base Sepolia: `npx hardhat run scripts/deploy-and-register.mjs --network baseSepolia`
+- [ ] Create project on hackathon platform (waiting for tracks API)
+- [ ] Verify contracts on BaseScan
