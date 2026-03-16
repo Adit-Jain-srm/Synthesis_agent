@@ -1,4 +1,7 @@
 import "@nomicfoundation/hardhat-toolbox";
+import "dotenv/config";
+
+const DEPLOYER_KEY = process.env.DEPLOYER_PRIVATE_KEY || "0x" + "0".repeat(64);
 
 /** @type import('hardhat/config').HardhatUserConfig */
 export default {
@@ -22,12 +25,14 @@ export default {
   networks: {
     hardhat: {},
     baseSepolia: {
-      url: "https://sepolia.base.org",
+      url: process.env.BASE_SEPOLIA_RPC || "https://sepolia.base.org",
       chainId: 84532,
+      accounts: [DEPLOYER_KEY],
     },
     base: {
-      url: "https://mainnet.base.org",
+      url: process.env.BASE_RPC || "https://mainnet.base.org",
       chainId: 8453,
+      accounts: [DEPLOYER_KEY],
     },
   },
 };

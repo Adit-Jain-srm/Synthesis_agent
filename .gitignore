@@ -10,6 +10,8 @@ contracts/artifacts/
 
 # Config with secrets
 config.json
+.env
+contracts/.env
 
 # OS
 .DS_Store
