@@ -116,9 +116,35 @@ Demo output confirms full lifecycle works end-to-end.
 - `skills` and `tools` arrays (required)
 - `intention` (required enum)
 
+### ValidationRegistry Added
+
+**Agent:** Built the third and final ERC-8004 registry:
+
+**ValidationRegistry (ERC-8004 Validation Registry):**
+- `validationRequest(validator, agentId, requestURI, requestHash)` — agents request verification
+- `validationResponse(requestHash, response, responseURI, responseHash, tag)` — validators respond with 0-100 scores
+- Progressive validation: validators can update responses (e.g., "soft-finality" then "hard-finality")
+- `getSummary()` — aggregated validation stats with tag/validator filtering
+- `getAgentValidations()` / `getValidatorRequests()` — lookup by agent or validator
+
+**Test results:** 30/30 passing (all 4 contracts)
+
+**Demo updated to 9 phases:** Deploy → Register → Metadata → Commitment → Fulfill → Reputation → Query → Validation → Final state
+
+**Agent:** Now have complete ERC-8004 coverage:
+1. Identity Registry (AgentRegistry — ERC-721)
+2. Reputation Registry (ReputationManager — feedback/scoring)
+3. Validation Registry (ValidationRegistry — independent verification)
+4. Commitment Engine (bonus — agent cooperation with staking)
+
+### Deployment Preparation
+
+**Agent:** Generated deployer wallet: `0x37203b9Ccc950f2A87a1cc31bC5f9fFCCaCc324A`
+- Configured Hardhat for Base Sepolia with dotenv
+- Wallet needs testnet ETH from faucet before deployment
+
 ### Next Steps
-- [ ] Deploy contracts to Base Sepolia when testnet ETH is available
+- [ ] Fund deployer wallet and deploy to Base Sepolia
 - [ ] Create project on platform when tracks are published
-- [ ] Build frontend demo showing agent trust workflows
 - [ ] Verify contracts on BaseScan/Blockscout
-- [ ] Consider adding ValidationRegistry (third ERC-8004 registry)
+- [ ] Build frontend demo showing agent trust workflows
