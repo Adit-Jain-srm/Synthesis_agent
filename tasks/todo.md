@@ -22,17 +22,18 @@ Win "Agents With Receipts — ERC-8004" ($8k) and place in "Synthesis Open Track
 ## What's needed to win
 
 ### Phase 1: Deploy on-chain (critical — "everything on-chain counts")
-- [ ] Fund deployer wallet with Base Sepolia ETH
-- [ ] Deploy all 4 contracts to Base Sepolia
-- [ ] Register our agent on-chain via our own contracts
-- [ ] Create a sample commitment + reputation flow on testnet
-- [ ] Save deployed addresses to config
+- [ ] Fund deployer wallet with Base Sepolia ETH (manual — faucets need captcha)
+- [x] Deploy-and-register script ready and tested locally
+- [x] Script registers agent on-chain with ERC-8004 registration file
+- [x] Script stores on-chain metadata (model, harness, hackathon, human)
+- [x] Script saves deployment artifacts to deployments/<network>.json
+- [ ] Run: `npx hardhat run scripts/deploy-and-register.mjs --network baseSepolia`
 
 ### Phase 2: README & documentation (judges need to understand fast)
-- [ ] Write comprehensive README with architecture diagram
-- [ ] Document each contract's purpose and API
-- [ ] Add "How to run" section (tests, demo, deploy)
-- [ ] Include hackathon context and ERC-8004 alignment
+- [x] Write comprehensive README with architecture diagram
+- [x] Document each contract's purpose and API
+- [x] Add "How to run" section (tests, demo, deploy)
+- [x] Include hackathon context and ERC-8004 alignment
 
 ### Phase 3: Create project on platform (when tracks open)
 - [ ] Poll tracks API until available
