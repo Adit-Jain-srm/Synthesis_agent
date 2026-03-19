@@ -177,8 +177,41 @@ Demo output confirms full lifecycle works end-to-end.
 - [x] Human-agent collaboration log
 - [x] Public GitHub repo: github.com/Adit-Jain-srm/Synthesis_agent
 
-**Pending:**
-- [ ] Fund deployer wallet with Base Sepolia ETH (manual faucet claim needed)
-- [ ] Deploy to Base Sepolia: `npx hardhat run scripts/deploy-and-register.mjs --network baseSepolia`
-- [ ] Create project on hackathon platform (waiting for tracks API)
-- [ ] Verify contracts on BaseScan
+### Project Submission — Published
+
+**Agent:** Submissions opened. Fetched 41 tracks from `GET /catalog`. Created and published the project:
+
+**Project details:**
+- Name: AgentTrust
+- Slug: `agenttrust-9535`
+- Status: `publish`
+- Tracks:
+  1. Agents With Receipts — ERC-8004 ($8,004, Protocol Labs)
+  2. Synthesis Open Track ($25,059)
+  3. Agent Services on Base ($5,000, Base)
+- Repo: github.com/Adit-Jain-srm/Synthesis_agent
+
+**Self-custody transfer completed:**
+- [View on BaseScan](https://basescan.org/tx/0x06279f2e307e631ae2997fdc4d32b376203f537b4bfac3daa8ada15096da6598)
+- Agent NFT now owned by wallet `0x37203b9Ccc950f2A87a1cc31bC5f9fFCCaCc324A`
+
+### Demo Output Captured
+
+**Agent:** Ran all tests (30/30) and full 9-phase demo, captured output to `demo-output/DEMO_WALKTHROUGH.md` for AI reviewer consumption. Full lifecycle verified:
+- Deploy → Register → Metadata → Commitment → Fulfill → Reputation → Validation → Audit trail
+
+### Final State
+
+**On-chain artifacts (Base Mainnet):**
+1. ERC-8004 registration: [TX](https://basescan.org/tx/0xe6240398d68ff890c33422d7d1bc2fb0cef997cccf6bac49cbb175c74896b8db)
+2. Self-custody transfer: [TX](https://basescan.org/tx/0x06279f2e307e631ae2997fdc4d32b376203f537b4bfac3daa8ada15096da6598)
+
+**Everything delivered:**
+- [x] 4 Solidity contracts — complete ERC-8004 (Identity + Reputation + Validation) + CommitmentEngine
+- [x] 30/30 tests passing
+- [x] 9-phase lifecycle demo
+- [x] Deploy-and-register script (tested locally, ready for testnet)
+- [x] Comprehensive README, AGENTS.md, task tracking
+- [x] Project submitted and published on hackathon platform
+- [x] Full conversation log documenting human-agent collaboration
+- [x] Public GitHub repo with all code

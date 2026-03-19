@@ -1,0 +1,77 @@
+ΓòöΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòù
+Γòæ       AgentTrust ΓÇö ERC-8004 Full Demo               Γòæ
+ΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥
+
+Γû╕ Phase 1: Deploy contracts
+
+  AgentRegistry:       0x5FbDB2315678afecb367f032d93F642f64180aa3
+  ReputationManager:   0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  CommitmentEngine:    0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+  ValidationRegistry:  0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+
+Γû╕ Phase 2: Register AI agents (ERC-8004 Identity)
+
+  Γ£ô DataProvider-Agent registered (agentId: 0, owner: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8)
+    NFT owner: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+    Agent wallet: 0x70997970C51812dc3A010C7d01b50e0d17dc79C8
+  Γ£ô Analyst-Agent registered (agentId: 1, owner: 0x3C44CdDdB6a900fa2b585dd299e03d12FA4293BC)
+    Total agents: 2
+
+Γû╕ Phase 3: Store on-chain metadata
+
+  DataProvider model: gpt-4o
+  Analyst model: claude-4.6-opus
+
+Γû╕ Phase 4: Agent-to-agent commitment (cooperation)
+
+  Γ£ô Commitment proposed (stake: 0.5 ETH)
+    Terms: "DataProvider delivers dataset, Analyst produces report"
+    Deadline: 2026-03-19T10:47:15.000Z
+
+  Γ£ô Commitment accepted by Analyst-Agent (matched stake: 0.5 ETH)
+    Total locked: 1.0 ETH
+
+Γû╕ Phase 5: Fulfill with on-chain evidence
+
+  Γ£ô Commitment fulfilled with evidence
+    Evidence URI: ipfs://QmEvidence123
+    Evidence hash: 0x7b0df2f0f26fe2f1...
+    Stakes returned to both parties
+
+Γû╕ Phase 6: Reputation feedback (ERC-8004 Reputation Registry)
+
+  Γ£ô Analyst gave DataProvider 92/100 (tag: starred, data-quality)
+  Γ£ô DataProvider gave Analyst 88/100 (tag: starred, report-quality)
+  Γ£ô Auditor gave DataProvider 95/100 (tag: uptime)
+  Γ£ô DataProvider appended response to Analyst's feedback
+
+Γû╕ Phase 7: Query on-chain reputation
+
+  DataProvider reputation:
+    Feedback count (starred): 1
+    Average score: 92/100
+    Total clients: 2
+  Analyst reputation:
+    Feedback count: 1
+    Average score: 88/100
+
+Γû╕ Phase 8: Independent validation (ERC-8004 Validation Registry)
+
+  Γ£ô DataProvider requested validation from Auditor
+    Request hash: 0x9f6aeee8f6e6c3e8...
+  Γ£ô Auditor validated: 92/100 (tag: data-quality)
+    Validator: 0x90F79bf6EB2c4f870365E785982E1f101E93b906
+    Score: 92/100, Tag: data-quality
+    Agent validation summary: 1 validations, avg 92/100
+
+Γû╕ Phase 9: Final state
+
+  Commitment #0: Fulfilled
+  Total agents registered: 3
+  Total commitments: 1
+
+ΓòöΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòù
+Γòæ  Demo complete ΓÇö full ERC-8004 agent trust lifecycle    Γòæ
+Γòæ  Identity ΓåÆ Metadata ΓåÆ Commitment ΓåÆ Fulfillment        Γòæ
+Γòæ  ΓåÆ Evidence ΓåÆ Reputation ΓåÆ Validation ΓåÆ Audit trail    Γòæ
+ΓòÜΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓò¥

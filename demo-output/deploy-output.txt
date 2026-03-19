@@ -1,0 +1,49 @@
+
+=== AgentTrust Deploy & Register ===
+Network: hardhat
+Deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+Balance: 10000.0 ETH
+
+Γû╕ Deploying contracts...
+
+  AgentRegistry:       0x5FbDB2315678afecb367f032d93F642f64180aa3
+  ReputationManager:   0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  CommitmentEngine:    0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+  ValidationRegistry:  0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9
+
+Γû╕ Registering AditSynthesisAgent on-chain...
+
+  Agent registered!
+  agentId: 0
+  NFT owner: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Agent wallet: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  TX hash: 0x5b974072a060a96341fc07dda9aeb225fec2305ad3d1c12165f3874fdb4d1b46
+
+Γû╕ Setting on-chain metadata...
+
+  model: claude-4.6-opus
+  harness: cursor
+  hackathon: synthesis-2026
+  human: Adit Jain
+
+  Deployment saved to: deployments/hardhat.json
+
+=== Deployment Complete ===
+
+{
+  "network": "hardhat",
+  "chainId": 31337,
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "timestamp": "2026-03-19T08:57:50.577Z",
+  "contracts": {
+    "AgentRegistry": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "ReputationManager": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    "CommitmentEngine": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+    "ValidationRegistry": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+  },
+  "agent": {
+    "agentId": 0,
+    "owner": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+    "txHash": "0x5b974072a060a96341fc07dda9aeb225fec2305ad3d1c12165f3874fdb4d1b46"
+  }
+}

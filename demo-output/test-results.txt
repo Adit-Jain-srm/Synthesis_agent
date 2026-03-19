@@ -1,0 +1,42 @@
+
+
+  AgentTrust ΓÇö ERC-8004 Aligned
+    AgentRegistry (ERC-8004 Identity)
+      ΓêÜ mints ERC-721 NFT on registration
+      ΓêÜ stores agent URI (token URI)
+      ΓêÜ sets agent wallet to owner on registration
+      ΓêÜ allows owner to update agent URI
+      ΓêÜ rejects non-owner URI update
+      ΓêÜ supports on-chain metadata key-value storage
+      ΓêÜ blocks setting agentWallet via setMetadata
+      ΓêÜ allows owner to change agent wallet
+      ΓêÜ clears agent wallet on transfer
+      ΓêÜ registers without URI
+      ΓêÜ tracks total agents
+    ReputationManager (ERC-8004 Reputation)
+      ΓêÜ accepts feedback from non-owner
+      ΓêÜ rejects self-review (owner reviewing own agent)
+      ΓêÜ tracks feedback index per client
+      ΓêÜ revokes feedback
+      ΓêÜ allows response appending
+      ΓêÜ computes summary across clients
+      ΓêÜ returns clients list
+    CommitmentEngine (Agent Cooperation)
+      ΓêÜ creates and accepts a commitment using agentIds
+      ΓêÜ fulfills commitment with evidence hash
+      ΓêÜ handles expiry and returns stake to proposer wallet
+      ΓêÜ allows disputes
+      ΓêÜ rejects proposals from non-agent-owners
+
+  ValidationRegistry (ERC-8004 Validation)
+    ΓêÜ creates a validation request
+    ΓêÜ rejects request from non-agent-owner
+    ΓêÜ allows validator to respond
+    ΓêÜ rejects response from non-validator
+    ΓêÜ allows multiple responses for progressive validation
+    ΓêÜ computes summary across validations
+    ΓêÜ tracks validator requests
+
+
+  30 passing (2s)
+
