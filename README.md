@@ -1,4 +1,20 @@
-# AgentTrust
+<div align="center">
+
+# Synthesis Agent
+
+**AI Agent for Research Paper Synthesis**
+
+[![Python](https://img.shields.io/badge/Python-3.10+-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![LangChain](https://img.shields.io/badge/LangChain-Agent-1C3C3C?logo=langchain)](https://langchain.com/)
+[![AI Agent](https://img.shields.io/badge/AI-Agent-FF6F00)](https://en.wikipedia.org/wiki/Intelligent_agent)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Last Commit](https://img.shields.io/github/last-commit/Adit-Jain-srm/Synthesis_agent)](https://github.com/Adit-Jain-srm/Synthesis_agent)
+
+*Autonomous AI agent that synthesizes research papers into actionable insights.*
+
+</div>
+
+---
 
 **On-chain trust infrastructure for autonomous AI agents, built on ERC-8004.**
 
